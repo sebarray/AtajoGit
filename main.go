@@ -1,20 +1,31 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 	"os/exec"
 )
 
 func main() {
+	comment, branch := argument()
+	gitSend(comment, branch)
+
+}
+
+func argument() (string, string) {
 	var branch, comment string
 	fmt.Println("enter the name of the branch")
 	fmt.Scan(&branch)
 	fmt.Println("enter a comment")
-	fmt.Scan(&comment)
-	fmt.Println(comment, branch)
+	scan := bufio.NewScanner(os.Stdin)
+	comment = scan.Text()
 	comment = "\"" + comment + "\""
+	return comment, branch
+}
 
+func gitSend(comment, branch string) {
 	out, err := exec.Command("git", "add", ".").Output()
 	output(out, err)
 
