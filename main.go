@@ -16,11 +16,12 @@ func main() {
 
 func argument() (string, string) {
 	var branch, comment string
+	fmt.Println("enter a comment")
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter text: ")
+	comment, _ = reader.ReadString('\n')
 	fmt.Println("enter the name of the branch")
 	fmt.Scan(&branch)
-	fmt.Println("enter a comment")
-	scan := bufio.NewScanner(os.Stdin)
-	comment = scan.Text()
 	comment = "\"" + comment + "\""
 	return comment, branch
 }
