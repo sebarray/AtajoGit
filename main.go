@@ -42,7 +42,7 @@ func output(out []byte, err error) {
 	if err != nil {
 		log.Fatal("Error")
 	} else {
-		fmt.Printf("\nOutput   is : %s \n", out)
+		fmt.Printf("\nOutput  is : %s \n", out)
 	}
 
 }
